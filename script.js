@@ -1,16 +1,17 @@
 $(document).ready(function() {
+    let startTime = 9;
+    let endTime = 17;
 
-
-
-let startTime = 9;
-let endTime = 17;
-
-if (verifyHours(startTime, endTime)) {
-    renderHours(startTime, endTime);
-}
-
-
+    if (verifyHours(startTime, endTime)) {
+        renderHours(startTime, endTime);
+    }
 });
+
+// new Date($.now()).getHours();
+
+// function checkTime() {
+
+// }
 
 function verifyHours(dayStart, dayEnd) {
     if (dayStart <= dayEnd) {
@@ -29,6 +30,9 @@ function verifyHours(dayStart, dayEnd) {
 }
 
 function renderHours(dayStart, dayEnd) {
+
+    $('#hour-list').html("");
+
     for (let i = dayStart; i <= dayEnd; i++) {
         let hourNumber = i;
         let AMPM = 'AM';
@@ -40,9 +44,11 @@ function renderHours(dayStart, dayEnd) {
     
         let newHour = $(
             `<section id="${i}">
-                <div class="hour">${hourNumber} ${AMPM}</div>
-                <input type="text">
-                <button class="save">save</button>
+                <div class="container">
+                    <div class="hour">${hourNumber} ${AMPM}</div>
+                    <textarea class="text"></textarea>
+                    <button class="save">Save</button>
+                </div>
             </section>`
         );
         $('#hour-list').append(newHour);

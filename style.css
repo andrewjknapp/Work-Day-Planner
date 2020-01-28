@@ -15,6 +15,11 @@ header {
     border-bottom: 5px;
 }
 
+header h1,
+header p {
+    text-align: center;
+}
+
 section { 
     margin: 0 auto;
     width: 70%;
@@ -23,38 +28,72 @@ section {
 
 section {
     height: 3em;
-    background-color: red;
-    border-style: dashed;
     padding: 0;
+}
+
+.container {
+    width: 70%;
+    height: 100%;
+    margin: 2px auto;
+    padding: 0 auto;
+}
+
+.save, 
+.text,
+.hour {
+    box-shadow: 10px 10px 5px grey;
 }
 
 .save {
     margin: 0; 
     padding: 0;
     height: 100%;
-    float: right;
+    float: left;
     width: 20%;
+    border: none;
+    border-radius: 0px 12px 12px 0px;
 }
 
-.hour {
+.save:hover {
+    background-color: lightgray;
+}
 
+.save:focus {
+
+    outline: none;
+}
+.save:active {
+    background-color: darkgray;
+}
+
+
+.hour {
     float: left;
+
     border-style: solid;
     border-left: none;
-    width: 4em;
+    border-bottom: none;
+    border-width: 1px;
+    border-bottom-left-radius: 12px;
+
+    
     text-align: right;
     height: 100%;
     width: 20%;
     max-width: 4em;
+    background-color: #f0f0f0;
+    padding: 2px;
 }
 
-input[type=text] {
-    display: inline-block;
+.text {
+    float: left;
     border: none;
     background-color: aqua;
     margin: 0;
+    padding: 2px;
     height: 100%;
     width: 60%;
+    resize: none;
 }
 
 
