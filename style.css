@@ -1,0 +1,61 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+header {
+    margin: 0 auto;
+    width: 70%;
+    border: black;
+    border-bottom: 5px;
+}
+
+section { 
+    margin: 0 auto;
+    width: 70%;
+}
+
+
+section {
+    height: 3em;
+    background-color: red;
+    border-style: dashed;
+    padding: 0;
+}
+
+.save {
+    margin: 0; 
+    padding: 0;
+    height: 100%;
+    float: right;
+    width: 20%;
+}
+
+.hour {
+
+    float: left;
+    border-style: solid;
+    border-left: none;
+    width: 4em;
+    text-align: right;
+    height: 100%;
+    width: 20%;
+    max-width: 4em;
+}
+
+input[type=text] {
+    display: inline-block;
+    border: none;
+    background-color: aqua;
+    margin: 0;
+    height: 100%;
+    width: 60%;
+}
+
+
+
