@@ -1,4 +1,4 @@
-let startTime = 9;
+let startTime = 7;
 let endTime = 17;
 $(document).ready(function() {
 
@@ -7,7 +7,6 @@ $(document).ready(function() {
         renderHours(startTime, endTime);
     }
 
-    console.log(plannerInformation);
 });
 
 let plannerInformation = [];
@@ -34,9 +33,9 @@ function renderHours(dayStart, dayEnd) {
     $('#hour-list').html("");
     
     plannerInformation = [];
-    console.log(localStorage.getItem('plannerInformation') !== null);
+   
     if(localStorage.getItem('plannerInformation') !== null) {
-        console.log("Hello");
+
         plannerInformation = JSON.parse(localStorage.getItem('plannerInformation'));
         hasStorage = true;
     }
@@ -49,11 +48,11 @@ function renderHours(dayStart, dayEnd) {
         
         let hourNumber = i;
         let AMPM = 'AM';
-        console.log(hasStorage);
         if (!hasStorage) {
             let hour = {
                 time: i,
                 activity: "",
+                color: "#00FA9A"
             };
             plannerInformation.push(hour);
         }
@@ -62,12 +61,21 @@ function renderHours(dayStart, dayEnd) {
             hourNumber = i - 12;
             AMPM = 'PM'
         }
+        
+        if (i < parseInt(new Date().getHours())) {
+            plannerInformation[index].color = '#c8cfcd';
+        } else if (i === parseInt(new Date().getHours())) {
+            plannerInformation[index].color = '#fa0060';
+        } else {
+            plannerInformation[index].color = '#00FA9A';
+        }
+        
     
         let newHour = $(
             `<section>
                 <div class="container" id="${i}" data-index="${index}">
                     <div class="hour">${hourNumber} ${AMPM}</div>
-                    <textarea class="text">${plannerInformation[index].activity}</textarea>
+                    <textarea class="text" style="background: ${plannerInformation[index].color}">${plannerInformation[index].activity}</textarea>
                     <button class="save">Save</button>
                 </div>
             </section>`
@@ -84,7 +92,6 @@ $('#hour-list').on("click", function(event) {
         let buttonIndex = parseInt(event.target.parentElement.getAttribute('data-index'));
         let buttonActivity = event.target.previousElementSibling.value;
         plannerInformation[buttonIndex].activity = buttonActivity;
-        //console.log(plannerInformation);
         localStorage.setItem('plannerInformation', JSON.stringify(plannerInformation));
         renderHours(startTime, endTime);
     }
