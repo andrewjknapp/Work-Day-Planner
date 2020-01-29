@@ -1,17 +1,16 @@
+let startTime = 9;
+let endTime = 17;
 $(document).ready(function() {
-    let startTime = 9;
-    let endTime = 17;
+
 
     if (verifyHours(startTime, endTime)) {
         renderHours(startTime, endTime);
     }
+
+    console.log(plannerInformation);
 });
 
-// new Date($.now()).getHours();
-
-// function checkTime() {
-
-// }
+let plannerInformation = [];
 
 function verifyHours(dayStart, dayEnd) {
     if (dayStart <= dayEnd) {
@@ -30,27 +29,63 @@ function verifyHours(dayStart, dayEnd) {
 }
 
 function renderHours(dayStart, dayEnd) {
-
+    let hasStorage = false;
+   
     $('#hour-list').html("");
+    
+    plannerInformation = [];
+    console.log(localStorage.getItem('plannerInformation') !== null);
+    if(localStorage.getItem('plannerInformation') !== null) {
+        console.log("Hello");
+        plannerInformation = JSON.parse(localStorage.getItem('plannerInformation'));
+        hasStorage = true;
+    }
+    
+    
 
+    let index = 0;
+   
     for (let i = dayStart; i <= dayEnd; i++) {
+        
         let hourNumber = i;
         let AMPM = 'AM';
-    
+        console.log(hasStorage);
+        if (!hasStorage) {
+            let hour = {
+                time: i,
+                activity: "",
+            };
+            plannerInformation.push(hour);
+        }
+
         if (i > 12) {
             hourNumber = i - 12;
             AMPM = 'PM'
         }
     
         let newHour = $(
-            `<section id="${i}">
-                <div class="container">
+            `<section>
+                <div class="container" id="${i}" data-index="${index}">
                     <div class="hour">${hourNumber} ${AMPM}</div>
-                    <textarea class="text"></textarea>
+                    <textarea class="text">${plannerInformation[index].activity}</textarea>
                     <button class="save">Save</button>
                 </div>
             </section>`
         );
+        
         $('#hour-list').append(newHour);
+        index++;
     };
 }
+
+$('#hour-list').on("click", function(event) {
+    if(event.target.matches('button')) {
+        
+        let buttonIndex = parseInt(event.target.parentElement.getAttribute('data-index'));
+        let buttonActivity = event.target.previousElementSibling.value;
+        plannerInformation[buttonIndex].activity = buttonActivity;
+        //console.log(plannerInformation);
+        localStorage.setItem('plannerInformation', JSON.stringify(plannerInformation));
+        renderHours(startTime, endTime);
+    }
+})
