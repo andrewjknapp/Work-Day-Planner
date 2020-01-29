@@ -93,6 +93,6 @@ $('#hour-list').on("click", function(event) {
         let buttonActivity = event.target.previousElementSibling.value;
         plannerInformation[buttonIndex].activity = buttonActivity;
         localStorage.setItem('plannerInformation', JSON.stringify(plannerInformation));
-        renderHours(startTime, endTime);
+       // renderHours(startTime, endTime);
     }
 })
