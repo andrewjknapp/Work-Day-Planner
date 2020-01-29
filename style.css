@@ -6,6 +6,7 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
+    background-image: url("assets/seamless_paper_texture.png");
 }
 
 header {
@@ -102,12 +103,12 @@ section {
     border-color: gray;
     border-width: 1px;
 
+    font-size: 1.25em;
     color: white;
-    text-shadow:
-		-1px -1px 0 #000,
-		1px -1px 0 #000,
-		-1px 1px 0 #000,
-		1px 1px 0 #000;
+    /* -webkit-text-fill-color: white; 
+    -webkit-text-stroke-width: 0.25px;
+    -webkit-text-stroke-color: black; */
+    text-shadow:1px 1px 0 #444;
 }
 
 
