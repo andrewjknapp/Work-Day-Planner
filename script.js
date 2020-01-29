@@ -1,4 +1,4 @@
-let startTime = 7;
+let startTime = 9;
 let endTime = 17;
 $(document).ready(function() {
 
@@ -87,12 +87,14 @@ function renderHours(dayStart, dayEnd) {
 }
 
 $('#hour-list').on("click", function(event) {
+    
     if(event.target.matches('button')) {
-        
         let buttonIndex = parseInt(event.target.parentElement.getAttribute('data-index'));
-        let buttonActivity = event.target.previousElementSibling.value;
-        plannerInformation[buttonIndex].activity = buttonActivity;
+        let buttonActivity = event.target.previousElementSibling;
+        plannerInformation[buttonIndex].activity = buttonActivity.value;
         localStorage.setItem('plannerInformation', JSON.stringify(plannerInformation));
-       // renderHours(startTime, endTime);
+        if (buttonActivity.scrollTop !== 0) {
+            buttonActivity.scrollTop = 0;
+        }
     }
 })
