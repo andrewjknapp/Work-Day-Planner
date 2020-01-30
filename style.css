@@ -16,45 +16,55 @@ header {
     border-bottom: 5px;
 }
 
+h1 {
+    color: white;
+    text-shadow:1px 1px 3px #000;
+}
+
 header h1,
 header p {
+    font-family: 'Playfair Display', serif;
+
     text-align: center;
 }
 
 
 
 
-section {
-    margin: 0 auto;
-    width: 70%;
-    height: 3em;
-    padding: 0;
-}
+
 
 .container {
     width: 70%;
-    height: 100%;
     margin: 2px auto;
     padding: 0 auto;
+    height: 3em;
+
 }
 
 .save, 
 .text,
 .hour {
-    box-shadow: 10px 10px 5px grey;
+    float: right;
+}
+
+.text,
+.hour {
+    box-shadow: 0px 10px 5px grey;
 }
 
 .save {
+    box-shadow: 10px 10px 5px grey;
+
     margin: 0; 
     padding: 0;
     height: 100%;
-    float: left;
-    width: 20%;
+    width: 10%;
 
     border-style: solid;
     border-radius: 0px 12px 12px 0px;
     border-width: 1px;
     border-color: gray;
+    background-color: #f0f0f0
 }
 
 .save:hover {
@@ -71,8 +81,6 @@ section {
 
 
 .hour {
-    float: left;
-
     border-style: solid;
     border-width: 1px;
     border-bottom-left-radius: 12px;
@@ -88,28 +96,47 @@ section {
 }
 
 .text {
-    float: left;
-    border: none;
     background-color: aqua;
+    z-index: 1;
 
     margin: 0;
     padding: 5px;
     height: 100%;
-    width: 60%;
+    width: 70%;
+
     resize: none;
+    overflow: hidden;
 
     border-style: solid;
     border-left: none;
+    border-right: none;
     border-color: gray;
     border-width: 1px;
 
     font-size: 1.25em;
     color: white;
-    /* -webkit-text-fill-color: white; 
-    -webkit-text-stroke-width: 0.25px;
-    -webkit-text-stroke-color: black; */
-    text-shadow:1px 1px 0 #444;
+    text-shadow:1px 1px 5px #000;
 }
 
+.text:focus {
+    overflow: auto;
+}
 
+@media screen and (max-width: 700px) {
+    .container {
+        width: 95%;
+    }
+    .save {
+        width: 20%;
+    }
+    .text {
+        width: 60%
+    }
+}
 
+@media screen and (min-width: 1100px) {
+    .container {
+        width: 700px;
+    }
+    
+}
