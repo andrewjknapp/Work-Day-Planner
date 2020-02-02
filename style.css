@@ -8,7 +8,7 @@ body {
     width: 100%;
     background-image: url("assets/seamless_paper_texture.png");
 }
-
+/*Styling for elements in header*/
 header {
     margin: 0 auto;
     width: 70%;
@@ -27,12 +27,7 @@ header p {
 
     text-align: center;
 }
-
-
-
-
-
-
+/*Styling for each hour block*/
 .container {
     width: 70%;
     margin: 2px auto;
@@ -51,7 +46,7 @@ header p {
 .hour {
     box-shadow: 0px 10px 5px grey;
 }
-
+/*Save Button Styling*/
 .save {
     box-shadow: 10px 10px 5px grey;
 
@@ -78,23 +73,7 @@ header p {
 .save:active {
     background-color: darkgray;
 }
-
-
-.hour {
-    border-style: solid;
-    border-width: 1px;
-    border-bottom-left-radius: 12px;
-    border-color: gray;
-
-    
-    text-align: right;
-    height: 100%;
-    width: 20%;
-    max-width: 4em;
-    background-color: #f0f0f0;
-    padding: 2px;
-}
-
+/*Textarea Styling*/
 .text {
     background-color: aqua;
     z-index: 1;
@@ -121,7 +100,25 @@ header p {
 .text:focus {
     overflow: auto;
 }
+/*Styling for section with hour displayed*/
+.hour {
+    border-style: solid;
+    border-width: 1px;
+    border-bottom-left-radius: 12px;
+    border-color: gray;
 
+    
+    text-align: right;
+    height: 100%;
+    width: 20%;
+    max-width: 4em;
+    background-color: #f0f0f0;
+    padding: 2px;
+}
+
+
+
+/*Allow website to respond to small and large screen sizes*/
 @media screen and (max-width: 700px) {
     .container {
         width: 95%;
